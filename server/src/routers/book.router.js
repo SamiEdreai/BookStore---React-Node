@@ -1,10 +1,10 @@
 import express from "express";
-import * as bookControllers from '../controllers/body.controller.js'
+import * as bookControllers from '../controllers/book.controller.js'
 
 const router = new express.Router();
 
-router.get('/books', bookControllers);
-router.get('/books/:booksID', bookControllers);
-
+router.get('/books', bookControllers.getbooks);
+router.get('/books/:id', bookControllers.getBook);
+router.post('/books/new', bookControllers.createBook);
 
 export default router;

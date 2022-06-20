@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
-import environments from '../../config/environments.js';
+
 
 const bookSchema = new mongoose.Schema(
     {
@@ -30,7 +29,7 @@ const bookSchema = new mongoose.Schema(
             required: [true, 'description is required'],
             minlength: 10,
             maxlength: 1000,
-            
+
         },
         pages: {
             type: Number,
@@ -44,7 +43,7 @@ const bookSchema = new mongoose.Schema(
             lowercase: true,
             required: [true, 'price is required'],
             validate(value) {
-                if (value === 0){
+                if (value === 0) {
                     throw new Error('The price cannot be 0$')
                 }
             }
@@ -52,10 +51,11 @@ const bookSchema = new mongoose.Schema(
     }
 );
 bookSchema.methods.toJSON = function () {
-const book = this;
+    const book = this;
 
-const bookObj = book.toObject();
-return bookObj;
+    const bookObj = book.toObject();
+    delete book.__V;
+    return bookObj;
 }
 
 const Book = mongoose.model('Book', bookSchema);

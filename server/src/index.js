@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import enviroments from '../config/enviroments.js';
 import cors from "cors";
 import connectMongoose from './databases/moongose.db.js';
-//import bookRouter from './routers/book.router.js';
+import bookRouter from './routers/book.router.js';
 
 dotenv.config();
 const PORT = enviroments.PORT
@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//app.use(bookRouter);
+app.use(bookRouter);
 
 
 
