@@ -42,11 +42,7 @@ const bookSchema = new mongoose.Schema(
             trim: true,
             lowercase: true,
             required: [true, 'price is required'],
-            validate(value) {
-                if (value === 0) {
-                    throw new Error('The price cannot be 0$')
-                }
-            }
+            min: 0
         }
     }
 );
