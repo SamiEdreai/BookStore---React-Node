@@ -7,11 +7,11 @@ export const createUser = async (req, res) => {
 
     const user = new User(userData);
 
-    const cart = new Cart({ ownerID: user._id });
+    //const cart = new Cart({ ownerID: user._id });
 
     try {
         await user.save();
-        await cart.save();
+        // await cart.save();
 
         const token = await user.generateAuthToken();
 
