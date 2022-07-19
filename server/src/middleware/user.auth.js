@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import enviroments from "../../config/enviroments.js";
+import environments from "../../config/environments.js";
 import User from "../models/user.model.js";
 
 
-const TOKEN_SECRET = enviroments.TOKEN_SECRET;
+const TOKEN_SECRET = environments.TOKEN_SECRET;
 
 const userAuth = async (req, res, next) => {
     try {

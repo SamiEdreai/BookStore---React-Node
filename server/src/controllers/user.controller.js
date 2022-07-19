@@ -7,11 +7,11 @@ export const createUser = async (req, res) => {
 
     const user = new User(userData);
 
-    //const cart = new Cart({ ownerID: user._id });
+    const cart = new Cart({ ownerID: user._id });
 
     try {
         await user.save();
-        // await cart.save();
+        await cart.save();
 
         const token = await user.generateAuthToken();
 
@@ -22,6 +22,7 @@ export const createUser = async (req, res) => {
             message: 'User account was created successfully',
         });
     } catch (err) {
+        console.log(err)
         res.status(400).send({
             status: 400,
             statusText: 'Bad Request',

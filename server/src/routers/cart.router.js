@@ -1,5 +1,5 @@
 import express from "express";
-import userAuth from '../middlewares/user.auth.js';
+import userAuth from '../middleware/user.auth.js';
 import * as cartController from '../controllers/cart.controller.js';
 
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import enviroments from '../../config/enviroments.js';
+import environments from '../../config/environments.js';
 
-const MONGODB_URL = enviroments.MONGODB_URL;
+const MONGODB_URL = environments.MONGODB_URL;
 
 const connectMongoose = async () => {
 

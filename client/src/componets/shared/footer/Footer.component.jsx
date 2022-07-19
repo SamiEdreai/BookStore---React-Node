@@ -1,7 +1,10 @@
 import React from "react";
+import './footer.style.css';
 
 const Footer = () => {
-    return (console.log('login-page'))
+    return (
+        <h2> developed by SamiEdreai</h2>
+    );
 };
 
 export default Footer;

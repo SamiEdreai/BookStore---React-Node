@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import isEmail from "validator/lib/isEmail";
-import isStrongPassword from "validator/lib/isStrongPassword";
+import isEmail from "validator/lib/isEmail.js";
+import isStrongPassword from "validator/lib/isStrongPassword.js";
 import jwt from "jsonwebtoken";
-import bcrypt from bcrypt;
-import enviroments from "../../config/enviroments.js";
+import bcrypt from 'bcrypt';
+import environments from "../../config/environments.js";
 
 const userSchema = new mongoose.Schema(
     {
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             trim: true,
             minlength: [8, 'Password must be at least 8 charcters'],
-            maxlength: [12, 'Password must be max 12 charters'],
+            // maxlength: [20, 'Password must be max 12 charters'],
             required: [true, 'Last name is required'],
             validate(value) {
                 if (!isStrongPassword(value)) {
@@ -79,7 +79,7 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
 
-    const token = jwt.sign({ _id: user._id }, enviroments.TOKEN_SECRET);
+    const token = jwt.sign({ _id: user._id }, environments.TOKEN_SECRET);
 
     user.tokens.push({ token: token });
     await user.save();
