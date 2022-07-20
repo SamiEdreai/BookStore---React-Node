@@ -3,7 +3,6 @@ import './loginPage.style.css';
 import isEmail from 'validator/lib/isEmail';
 import isStrongPassword from "validator/lib/isStrongPassword";
 
-import Loader from '../../componets/shared/loader/Loader.component';
 
 
 const LoginPage = () => {
@@ -64,18 +63,22 @@ const LoginPage = () => {
                     <div className="form-group">
 
                         <div className="form-input-container">
-                            <label className="form-label" htmlFor="emailInput">Email:</label>
+                            <div className="input-container">
+                                <label className="form-label" htmlFor="emailInput">Email:</label>
 
-                            <input onInput={handleEmail} type="text" id="emailInput" required />
+                                <input onInput={handleEmail} type="text" id="emailInput" required />
+                            </div>
 
-                            {!isEmailValide && <div className="email-valid">{emailErrorMassege}</div>}
+                            {!isEmailValide && <div className="error-massage">{emailErrorMassege}</div>}
                         </div>
 
 
                         <div className="form-input-container">
-                            <label className="form-label" htmlFor="Password">Password:</label>
-                            <input onInput={handlePassword} type="password" id="password" required />
-                            {!isPasswordValide && <div className="email-valid">{passwordErrorMassege}</div>}
+                            <div className="input-container">
+                                <label className="form-label" htmlFor="Password">Password:</label>
+                                <input onInput={handlePassword} type="password" id="password" required />
+                            </div>
+                            {!isPasswordValide && <div className="error-massage">{passwordErrorMassege}</div>}
                         </div>
 
                     </div>
